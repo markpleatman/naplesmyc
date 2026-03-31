@@ -1,463 +1,460 @@
+---
+---
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Naples Model Yacht Club</title> 
+  <title>Naples Model Yacht Club</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-```
-:root {
-  --navy: #0d1f3c;
-  --navy-light: #1a3460;
-  --gold: #c9963a;
-  --gold-light: #e8b96a;
-  --white: #f8f5ef;
-  --text: #1a1a2e;
-  --muted: #6b7a99;
-  --rule: rgba(201,150,58,0.25);
-}
+    :root {
+      --navy: #0d1f3c;
+      --navy-light: #1a3460;
+      --gold: #c9963a;
+      --gold-light: #e8b96a;
+      --white: #f8f5ef;
+      --text: #1a1a2e;
+      --muted: #6b7a99;
+      --rule: rgba(201,150,58,0.25);
+    }
 
-html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
 
-body {
-  background: var(--white);
-  color: var(--text);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  line-height: 1.7;
-}
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: var(--navy);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2rem;
-  height: 64px;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-}
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    }
 
-.nav-brand {
-  color: var(--gold);
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-decoration: none;
-  white-space: nowrap;
-}
+    .nav-brand {
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
 
-.nav-links {
-  display: flex; gap: 0; list-style: none;
-}
+    .nav-links {
+      display: flex; gap: 0; list-style: none;
+    }
 
-.nav-links a {
-  color: rgba(248,245,239,0.75);
-  text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0 1rem;
-  height: 64px;
-  display: flex; align-items: center;
-  transition: color 0.2s, background 0.2s;
-  border-bottom: 2px solid transparent;
-}
-.nav-links a:hover {
-  color: var(--gold);
-  border-bottom-color: var(--gold);
-}
+    .nav-links a {
+      color: rgba(248,245,239,0.75);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0 1rem;
+      height: 64px;
+      display: flex; align-items: center;
+      transition: color 0.2s, background 0.2s;
+      border-bottom: 2px solid transparent;
+    }
+    .nav-links a:hover {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
 
-/* hamburger */
-.hamburger {
-  display: none;
-  flex-direction: column; gap: 5px; cursor: pointer;
-  background: none; border: none; padding: 4px;
-}
-.hamburger span {
-  display: block; width: 26px; height: 2px;
-  background: var(--white); border-radius: 2px;
-  transition: all 0.3s;
-}
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: all 0.3s;
+    }
 
-.mobile-menu {
-  display: none;
-  position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
-  background: var(--navy);
-  z-index: 99;
-  overflow-y: auto;
-  padding: 1.5rem 0;
-}
-.mobile-menu.open { display: block; }
-.mobile-menu a {
-  display: block;
-  color: var(--white);
-  text-decoration: none;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 400;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  transition: background 0.15s, color 0.15s;
-}
-.mobile-menu a:hover { background: var(--navy-light); color: var(--gold); }
-.mobile-menu .section-label {
-  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--gold); padding: 1.2rem 2rem 0.4rem; font-weight: 500;
-}
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--navy);
+      z-index: 99;
+      overflow-y: auto;
+      padding: 1.5rem 0;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      color: var(--white);
+      text-decoration: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 400;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.15s, color 0.15s;
+    }
+    .mobile-menu a:hover { background: var(--navy-light); color: var(--gold); }
+    .mobile-menu .section-label {
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); padding: 1.2rem 2rem 0.4rem; font-weight: 500;
+    }
 
-/* ── HERO ── */
-.hero {
-  margin-top: 64px;
-  background: var(--navy);
-  min-height: 480px;
-  display: flex; align-items: center;
-  position: relative;
-  overflow: hidden;
-  padding: 5rem 2rem;
-}
+    /* ── HERO ── */
+    .hero {
+      margin-top: 64px;
+      background: var(--navy);
+      min-height: 480px;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 2rem;
+    }
 
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 120% 80% at 70% 110%, rgba(201,150,58,0.12) 0%, transparent 60%),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 20px,
-      rgba(255,255,255,0.015) 20px,
-      rgba(255,255,255,0.015) 21px
-    );
-}
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 120% 80% at 70% 110%, rgba(201,150,58,0.12) 0%, transparent 60%),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 20px,
+          rgba(255,255,255,0.015) 20px,
+          rgba(255,255,255,0.015) 21px
+        );
+    }
 
-/* decorative wave lines */
-.hero::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
+    /* decorative wave lines */
+    .hero::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
 
-.hero-content {
-  position: relative; max-width: 640px;
-}
+    .hero-content {
+      position: relative; max-width: 640px;
+    }
 
-.hero-eyebrow {
-  font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--gold); font-weight: 500; margin-bottom: 1rem;
-}
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 1rem;
+    }
 
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  font-weight: 900;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 1.25rem;
-}
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
 
-.hero h1 em {
-  font-style: italic; color: var(--gold-light);
-}
+    .hero h1 em {
+      font-style: italic; color: var(--gold-light);
+    }
 
-.hero p {
-  color: rgba(248,245,239,0.7);
-  font-size: 1.05rem;
-  max-width: 480px;
-  margin-bottom: 2rem;
-}
+    .hero p {
+      color: rgba(248,245,239,0.7);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
 
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  background: var(--gold); color: var(--navy);
-  text-decoration: none; font-weight: 500;
-  font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 0.85rem 1.8rem;
-  border-radius: 2px;
-  transition: background 0.2s, transform 0.15s;
-}
-.hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--gold); color: var(--navy);
+      text-decoration: none; font-weight: 500;
+      font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.85rem 1.8rem;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
 
-/* ── SECTIONS ── */
-section { padding: 5rem 2rem; }
-section:nth-child(even) { background: #f0ece3; }
+    /* ── SECTIONS ── */
+    section { padding: 5rem 2rem; }
+    section:nth-child(even) { background: #f0ece3; }
 
-.section-inner { max-width: 900px; margin: 0 auto; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
 
-.section-header {
-  display: flex; align-items: baseline; gap: 1rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--rule);
-}
+    .section-header {
+      display: flex; align-items: baseline; gap: 1rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
 
-.section-header h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  font-weight: 700;
-  color: var(--navy);
-}
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: var(--navy);
+    }
 
-.section-tag {
-  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--gold); font-weight: 500;
-  margin-left: auto; white-space: nowrap;
-}
+    .section-tag {
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500;
+      margin-left: auto; white-space: nowrap;
+    }
 
-/* ── WELCOME ── */
-.welcome-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
-}
-.welcome-grid p { color: #3a3a5c; font-size: 1rem; margin-bottom: 1rem; }
+    /* ── WELCOME ── */
+    .welcome-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .welcome-grid p { color: #3a3a5c; font-size: 1rem; margin-bottom: 1rem; }
 
-.code-of-conduct ol {
-  counter-reset: coc;
-  list-style: none; padding: 0;
-}
-.code-of-conduct li {
-  counter-increment: coc;
-  display: flex; gap: 0.9rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--rule);
-  font-size: 0.92rem;
-  color: #3a3a5c;
-  align-items: flex-start;
-}
-.code-of-conduct li::before {
-  content: counter(coc);
-  min-width: 24px; height: 24px;
-  background: var(--navy);
-  color: var(--gold);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 700;
-  flex-shrink: 0; margin-top: 2px;
-}
+    .code-of-conduct ol {
+      counter-reset: coc;
+      list-style: none; padding: 0;
+    }
+    .code-of-conduct li {
+      counter-increment: coc;
+      display: flex; gap: 0.9rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.92rem;
+      color: #3a3a5c;
+      align-items: flex-start;
+    }
+    .code-of-conduct li::before {
+      content: counter(coc);
+      min-width: 24px; height: 24px;
+      background: var(--navy);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700;
+      flex-shrink: 0; margin-top: 2px;
+    }
 
-/* ── SCHEDULE ── */
-.schedule-tabs {
-  display: flex; gap: 0;
-  border-bottom: 2px solid var(--rule);
-  margin-bottom: 2rem;
-}
-.tab-btn {
-  background: none; border: none; cursor: pointer;
-  padding: 0.7rem 1.4rem;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.82rem; font-weight: 500;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
-  transition: color 0.2s, border-color 0.2s;
-}
-.tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+    /* ── SCHEDULE ── */
+    .schedule-tabs {
+      display: flex; gap: 0;
+      border-bottom: 2px solid var(--rule);
+      margin-bottom: 2rem;
+    }
+    .tab-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 0.7rem 1.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
 
-.tab-pane { display: none; }
-.tab-pane.active { display: block; }
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; }
 
-.schedule-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-}
+    .schedule-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
 
-.schedule-card {
-  background: var(--navy);
-  border-radius: 4px;
-  padding: 1.25rem 1.2rem;
-  border-left: 3px solid var(--gold);
-}
-.schedule-card .day {
-  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--gold); font-weight: 500; margin-bottom: 0.3rem;
-}
-.schedule-card .class-name {
-  font-family: 'Playfair Display', serif;
-  color: var(--white); font-size: 1.1rem; font-weight: 700;
-}
-.schedule-card .time {
-  color: rgba(248,245,239,0.55); font-size: 0.82rem; margin-top: 0.2rem;
-}
+    .schedule-card {
+      background: var(--navy);
+      border-radius: 4px;
+      padding: 1.25rem 1.2rem;
+      border-left: 3px solid var(--gold);
+    }
+    .schedule-card .day {
+      font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 0.3rem;
+    }
+    .schedule-card .class-name {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 1.1rem; font-weight: 700;
+    }
+    .schedule-card .time {
+      color: rgba(248,245,239,0.55); font-size: 0.82rem; margin-top: 0.2rem;
+    }
 
-.doc-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
-.doc-link {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  border: 1px solid var(--gold);
-  color: var(--navy); text-decoration: none;
-  padding: 0.55rem 1rem;
-  font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
-  border-radius: 2px;
-  transition: background 0.2s, color 0.2s;
-}
-.doc-link:hover { background: var(--gold); color: var(--white); }
-.doc-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .doc-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+    .doc-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      border: 1px solid var(--gold);
+      color: var(--navy); text-decoration: none;
+      padding: 0.55rem 1rem;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em;
+      border-radius: 2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .doc-link:hover { background: var(--gold); color: var(--white); }
+    .doc-link svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-/* ── RESULTS ── */
-.fleet-block { margin-bottom: 2.5rem; }
-.fleet-block h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem; color: var(--navy); font-weight: 700;
-  margin-bottom: 0.75rem;
-  display: flex; align-items: center; gap: 0.6rem;
-}
-.fleet-block h3::after {
-  content: ''; flex: 1; height: 1px; background: var(--rule);
-}
-.result-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.result-pill {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  background: var(--navy); color: var(--white);
-  text-decoration: none; font-size: 0.8rem; font-weight: 400;
-  padding: 0.45rem 0.9rem; border-radius: 20px;
-  transition: background 0.2s, transform 0.15s;
-}
-.result-pill:hover { background: var(--navy-light); transform: translateY(-1px); }
-.result-pill .num {
-  background: var(--gold); color: var(--navy);
-  border-radius: 50%; width: 18px; height: 18px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.68rem; font-weight: 700; flex-shrink: 0;
-}
+    /* ── RESULTS ── */
+    .fleet-block { margin-bottom: 2.5rem; }
+    .fleet-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--navy); font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .fleet-block h3::after {
+      content: ''; flex: 1; height: 1px; background: var(--rule);
+    }
+    .result-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .result-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--navy); color: var(--white);
+      text-decoration: none; font-size: 0.8rem; font-weight: 400;
+      padding: 0.45rem 0.9rem; border-radius: 20px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .result-pill:hover { background: var(--navy-light); transform: translateY(-1px); }
+    .result-pill .num {
+      background: var(--gold); color: var(--navy);
+      border-radius: 50%; width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.68rem; font-weight: 700; flex-shrink: 0;
+    }
 
-/* ── CLASSES ── */
-.classes-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-}
-.class-card {
-  background: var(--navy);
-  border-radius: 4px; padding: 1.75rem;
-  position: relative; overflow: hidden;
-}
-.class-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: var(--gold);
-}
-.class-card h3 {
-  font-family: 'Playfair Display', serif;
-  color: var(--white); font-size: 1.25rem; margin-bottom: 0.75rem;
-}
-.class-card p { color: rgba(248,245,239,0.65); font-size: 0.88rem; line-height: 1.65; }
-.class-card .captain {
-  margin-top: 1rem; font-size: 0.78rem;
-  color: var(--gold); font-weight: 500;
-}
-.class-card .captain a { color: inherit; }
+    /* ── CLASSES ── */
+    .classes-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .class-card {
+      background: var(--navy);
+      border-radius: 4px; padding: 1.75rem;
+      position: relative; overflow: hidden;
+    }
+    .class-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold);
+    }
+    .class-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 1.25rem; margin-bottom: 0.75rem;
+    }
+    .class-card p { color: rgba(248,245,239,0.65); font-size: 0.88rem; line-height: 1.65; }
+    .class-card .captain {
+      margin-top: 1rem; font-size: 0.78rem;
+      color: var(--gold); font-weight: 500;
+    }
+    .class-card .captain a { color: inherit; }
 
-/* ── LOCATION ── */
-.pond-block { margin-bottom: 2.5rem; }
-.pond-block h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem; color: var(--navy); margin-bottom: 0.5rem;
-}
-.pond-block p { color: #3a3a5c; font-size: 0.95rem; margin-bottom: 0.5rem; }
-.map-btn {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  background: var(--navy); color: var(--white);
-  text-decoration: none; font-size: 0.8rem; font-weight: 500;
-  padding: 0.55rem 1rem; border-radius: 2px;
-  transition: background 0.2s;
-}
-.map-btn:hover { background: var(--navy-light); }
+    /* ── LOCATION ── */
+    .pond-block { margin-bottom: 2.5rem; }
+    .pond-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; color: var(--navy); margin-bottom: 0.5rem;
+    }
+    .pond-block p { color: #3a3a5c; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .map-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--navy); color: var(--white);
+      text-decoration: none; font-size: 0.8rem; font-weight: 500;
+      padding: 0.55rem 1rem; border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .map-btn:hover { background: var(--navy-light); }
 
-/* ── NEWSLETTERS ── */
-.newsletter-year { margin-bottom: 2rem; }
-.newsletter-year h3 {
-  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
-}
-.newsletter-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-.newsletter-pill {
-  display: inline-block;
-  background: white; border: 1px solid #d5cfc2;
-  color: var(--navy); text-decoration: none;
-  font-size: 0.8rem; font-weight: 400;
-  padding: 0.4rem 0.85rem; border-radius: 2px;
-  transition: border-color 0.2s, background 0.2s;
-}
-.newsletter-pill:hover { border-color: var(--gold); background: #fdf8ef; }
+    /* ── NEWSLETTERS ── */
+    .newsletter-year { margin-bottom: 2rem; }
+    .newsletter-year h3 {
+      font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+    }
+    .newsletter-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .newsletter-pill {
+      display: inline-block;
+      background: white; border: 1px solid #d5cfc2;
+      color: var(--navy); text-decoration: none;
+      font-size: 0.8rem; font-weight: 400;
+      padding: 0.4rem 0.85rem; border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .newsletter-pill:hover { border-color: var(--gold); background: #fdf8ef; }
 
-/* ── JOIN ── */
-.join-box {
-  background: var(--navy);
-  border-radius: 4px; padding: 3rem;
-  text-align: center;
-  position: relative; overflow: hidden;
-}
-.join-box::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(circle at 50% 120%, rgba(201,150,58,0.15), transparent 60%);
-}
-.join-box h2 {
-  font-family: 'Playfair Display', serif;
-  color: var(--white); font-size: 2rem; margin-bottom: 0.75rem;
-  position: relative;
-}
-.join-box p {
-  color: rgba(248,245,239,0.65); max-width: 480px;
-  margin: 0 auto 2rem; position: relative;
-}
-.join-btn {
-  display: inline-block;
-  background: var(--gold); color: var(--navy);
-  text-decoration: none; font-weight: 500;
-  font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
-  padding: 1rem 2.5rem; border-radius: 2px;
-  position: relative;
-  transition: background 0.2s, transform 0.15s;
-}
-.join-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    /* ── JOIN ── */
+    .join-box {
+      background: var(--navy);
+      border-radius: 4px; padding: 3rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .join-box::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 120%, rgba(201,150,58,0.15), transparent 60%);
+    }
+    .join-box h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 2rem; margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .join-box p {
+      color: rgba(248,245,239,0.65); max-width: 480px;
+      margin: 0 auto 2rem; position: relative;
+    }
+    .join-btn {
+      display: inline-block;
+      background: var(--gold); color: var(--navy);
+      text-decoration: none; font-weight: 500;
+      font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 1rem 2.5rem; border-radius: 2px;
+      position: relative;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .join-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
 
-/* ── FOOTER ── */
-footer {
-  background: #080f1e; color: rgba(248,245,239,0.4);
-  text-align: center; padding: 2rem;
-  font-size: 0.8rem;
-}
-footer a { color: var(--gold); text-decoration: none; }
+    /* ── FOOTER ── */
+    footer {
+      background: #080f1e; color: rgba(248,245,239,0.4);
+      text-align: center; padding: 2rem;
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 700px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .welcome-grid { grid-template-columns: 1fr; }
-  .classes-grid { grid-template-columns: 1fr; }
-  .schedule-grid { grid-template-columns: 1fr 1fr; }
-  section { padding: 3rem 1.25rem; }
-  .hero { padding: 3rem 1.25rem; min-height: 360px; }
-  .join-box { padding: 2rem 1.25rem; }
-}
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .welcome-grid { grid-template-columns: 1fr; }
+      .classes-grid { grid-template-columns: 1fr; }
+      .schedule-grid { grid-template-columns: 1fr 1fr; }
+      section { padding: 3rem 1.25rem; }
+      .hero { padding: 3rem 1.25rem; min-height: 360px; }
+      .join-box { padding: 2rem 1.25rem; }
+    }
 
-@media (max-width: 420px) {
-  .schedule-grid { grid-template-columns: 1fr; }
-}
+    @media (max-width: 420px) {
+      .schedule-grid { grid-template-columns: 1fr; }
+    }
 
-/* animations */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.hero-content > * {
-  animation: fadeUp 0.7s ease both;
-}
-.hero-content > *:nth-child(2) { animation-delay: 0.1s; }
-.hero-content > *:nth-child(3) { animation-delay: 0.2s; }
-.hero-content > *:nth-child(4) { animation-delay: 0.3s; }
-```
-
+    /* animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-content > * {
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-content > *:nth-child(2) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.2s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.3s; }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-
 <nav>
   <a class="nav-brand" href="#home">NMYC</a>
   <ul class="nav-links">
@@ -474,7 +471,6 @@ footer a { color: var(--gold); text-decoration: none; }
 </nav>
 
 <!-- MOBILE MENU -->
-
 <div class="mobile-menu" id="mobileMenu">
   <div class="section-label">Navigation</div>
   <a href="#schedule" onclick="closeMenu()">Race Schedule</a>
@@ -495,7 +491,6 @@ footer a { color: var(--gold); text-decoration: none; }
 </div>
 
 <!-- HERO -->
-
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-eyebrow">Naples, Florida · Est. North Collier Regional Park</div>
@@ -509,7 +504,6 @@ footer a { color: var(--gold); text-decoration: none; }
 </section>
 
 <!-- WELCOME -->
-
 <section id="welcome">
   <div class="section-inner">
     <div class="section-header">
@@ -539,7 +533,6 @@ footer a { color: var(--gold); text-decoration: none; }
 </section>
 
 <!-- SCHEDULE -->
-
 <section id="schedule">
   <div class="section-inner">
     <div class="section-header">
@@ -547,114 +540,110 @@ footer a { color: var(--gold); text-decoration: none; }
       <span class="section-tag">2026 Season</span>
     </div>
 
-```
-<div class="schedule-tabs">
-  <button class="tab-btn active" onclick="showTab('in-season', this)">In-Season (Jan–Mar)</button>
-  <button class="tab-btn" onclick="showTab('off-season', this)">Off-Season (Apr–Dec)</button>
-  <button class="tab-btn" onclick="showTab('docs', this)">Documents</button>
-</div>
+    <div class="schedule-tabs">
+      <button class="tab-btn active" onclick="showTab('in-season', this)">In-Season (Jan–Mar)</button>
+      <button class="tab-btn" onclick="showTab('off-season', this)">Off-Season (Apr–Dec)</button>
+      <button class="tab-btn" onclick="showTab('docs', this)">Documents</button>
+    </div>
 
-<div class="tab-pane active" id="in-season">
-  <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;">Venue: North Collier Regional Park, 15000 Livingston Rd · Jan 1 – Mar 31, 2026</p>
-  <div class="schedule-grid">
-    <div class="schedule-card">
-      <div class="day">Monday</div>
-      <div class="class-name">DF65</div>
-      <div class="time">9:30 – 11:30 AM</div>
+    <div class="tab-pane active" id="in-season">
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;">Venue: North Collier Regional Park, 15000 Livingston Rd · Jan 1 – Mar 31, 2026</p>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <div class="day">Monday</div>
+          <div class="class-name">DF65</div>
+          <div class="time">9:30 – 11:30 AM</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Tuesday</div>
+          <div class="class-name">SeaWind</div>
+          <div class="time">9:30 – 11:30 AM</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Wednesday</div>
+          <div class="class-name">IOM</div>
+          <div class="time">9:30 AM – Noon</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Thursday</div>
+          <div class="class-name">Soling 1M</div>
+          <div class="time">9:30 – 11:30 AM</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Friday</div>
+          <div class="class-name">DF95</div>
+          <div class="time">9:30 AM – Noon</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Saturday</div>
+          <div class="class-name">Mixed Fleet</div>
+          <div class="time">Pond #2 · Jan–Mar</div>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:0.8rem;margin-top:1rem;">Unless notified by Fleet Captain via email the day prior.</p>
     </div>
-    <div class="schedule-card">
-      <div class="day">Tuesday</div>
-      <div class="class-name">SeaWind</div>
-      <div class="time">9:30 – 11:30 AM</div>
-    </div>
-    <div class="schedule-card">
-      <div class="day">Wednesday</div>
-      <div class="class-name">IOM</div>
-      <div class="time">9:30 AM – Noon</div>
-    </div>
-    <div class="schedule-card">
-      <div class="day">Thursday</div>
-      <div class="class-name">Soling 1M</div>
-      <div class="time">9:30 – 11:30 AM</div>
-    </div>
-    <div class="schedule-card">
-      <div class="day">Friday</div>
-      <div class="class-name">DF95</div>
-      <div class="time">9:30 AM – Noon</div>
-    </div>
-    <div class="schedule-card">
-      <div class="day">Saturday</div>
-      <div class="class-name">Mixed Fleet</div>
-      <div class="time">Pond #2 · Jan–Mar</div>
-    </div>
-  </div>
-  <p style="color:var(--muted);font-size:0.8rem;margin-top:1rem;">Unless notified by Fleet Captain via email the day prior.</p>
-</div>
 
-<div class="tab-pane" id="off-season">
-  <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;">Venue: North Collier Regional Park · Apr 23 – Dec 31, 2025</p>
-  <div class="schedule-grid">
-    <div class="schedule-card">
-      <div class="day">Monday</div>
-      <div class="class-name">DF65</div>
-      <div class="time">9:30 – 11:30 AM</div>
+    <div class="tab-pane" id="off-season">
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.5rem;">Venue: North Collier Regional Park · Apr 23 – Dec 31, 2025</p>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <div class="day">Monday</div>
+          <div class="class-name">DF65</div>
+          <div class="time">9:30 – 11:30 AM</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Tuesday</div>
+          <div class="class-name">SeaWind</div>
+          <div class="time">9:30 – 11:30 AM</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Wednesday</div>
+          <div class="class-name">IOM</div>
+          <div class="time">9:30 AM – Noon</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Thursday</div>
+          <div class="class-name">Soling 1M</div>
+          <div class="time">9:30 – 11:30 AM</div>
+        </div>
+        <div class="schedule-card">
+          <div class="day">Friday</div>
+          <div class="class-name">DF95</div>
+          <div class="time">9:30 AM – Noon</div>
+        </div>
+      </div>
+      <p style="color:var(--muted);font-size:0.8rem;margin-top:1rem;">Unless notified by Fleet Captain via email the day prior.</p>
     </div>
-    <div class="schedule-card">
-      <div class="day">Tuesday</div>
-      <div class="class-name">SeaWind</div>
-      <div class="time">9:30 – 11:30 AM</div>
-    </div>
-    <div class="schedule-card">
-      <div class="day">Wednesday</div>
-      <div class="class-name">IOM</div>
-      <div class="time">9:30 AM – Noon</div>
-    </div>
-    <div class="schedule-card">
-      <div class="day">Thursday</div>
-      <div class="class-name">Soling 1M</div>
-      <div class="time">9:30 – 11:30 AM</div>
-    </div>
-    <div class="schedule-card">
-      <div class="day">Friday</div>
-      <div class="class-name">DF95</div>
-      <div class="time">9:30 AM – Noon</div>
-    </div>
-  </div>
-  <p style="color:var(--muted);font-size:0.8rem;margin-top:1rem;">Unless notified by Fleet Captain via email the day prior.</p>
-</div>
 
-<div class="tab-pane" id="docs">
-  <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">Official 2026 season documents:</p>
-  <div class="doc-links">
-    <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_f44f0dc8527d4bef8b82503b8652e1ea.pdf" target="_blank">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
-      Racing Schedule (PDF)
-    </a>
-    <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_d2bba93396e64f7b8dd4f6cb57404864.pdf" target="_blank">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
-      NOR – Sailing Instructions (PDF)
-    </a>
-    <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_67437ab8695a42b4878c42733ec5432b.pdf" target="_blank">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
-      2026 Fleets (PDF)
-    </a>
-    <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/8971bb_d5c9fc519a1940dbbb2554627e9b9265.pdf" target="_blank">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
-      Corinthian Spirit (PDF)
-    </a>
-    <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_6cbb4b2eda014f9c96c80a5b74baaa9d.pdf" target="_blank">
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
-      Race Management Policy (PDF)
-    </a>
-  </div>
-</div>
-```
-
+    <div class="tab-pane" id="docs">
+      <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1.25rem;">Official 2026 season documents:</p>
+      <div class="doc-links">
+        <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_f44f0dc8527d4bef8b82503b8652e1ea.pdf" target="_blank">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
+          Racing Schedule (PDF)
+        </a>
+        <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_d2bba93396e64f7b8dd4f6cb57404864.pdf" target="_blank">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
+          NOR – Sailing Instructions (PDF)
+        </a>
+        <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_67437ab8695a42b4878c42733ec5432b.pdf" target="_blank">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
+          2026 Fleets (PDF)
+        </a>
+        <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/8971bb_d5c9fc519a1940dbbb2554627e9b9265.pdf" target="_blank">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
+          Corinthian Spirit (PDF)
+        </a>
+        <a class="doc-link" href="https://www.naplesmyc.org/_files/ugd/cc337f_6cbb4b2eda014f9c96c80a5b74baaa9d.pdf" target="_blank">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1h6l4 4v10H4V1z"/><path d="M10 1v4h4"/><path d="M5 10h6M5 12h4"/></svg>
+          Race Management Policy (PDF)
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- RESULTS -->
-
 <section id="results">
   <div class="section-inner">
     <div class="section-header">
@@ -662,89 +651,85 @@ footer a { color: var(--gold); text-decoration: none; }
       <span class="section-tag">2026</span>
     </div>
 
-```
-<div class="fleet-block">
-  <h3>DF65 Fleet</h3>
-  <div class="result-pills">
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_203321f3f5c14d26b1f8d7690c47fa56.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_7316b7629ac54f8496d35eb8495030bb.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_79c38a4553e0417c833dcf2f74f82de8.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_1bacf8a0aa1545109d1ae7d84aa36d02.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_d6741257422c4c3eb7fe763897a5074f.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
-  </div>
-</div>
+    <div class="fleet-block">
+      <h3>DF65 Fleet</h3>
+      <div class="result-pills">
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_203321f3f5c14d26b1f8d7690c47fa56.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_7316b7629ac54f8496d35eb8495030bb.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_79c38a4553e0417c833dcf2f74f82de8.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_1bacf8a0aa1545109d1ae7d84aa36d02.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_d6741257422c4c3eb7fe763897a5074f.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
+      </div>
+    </div>
 
-<div class="fleet-block">
-  <h3>DF95 Red Fleet</h3>
-  <div class="result-pills">
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_8bfdd7df5524492eb8dbcbc3f22bc9f9.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_78d4bf31332e460e83a1b27816722c95.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_0c064c0d77d44a5787b8c44aab44ff2d.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_909387e60f3e4306b0ad40e09f6bb4bb.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_b5bab182f8ba4ecf88393de5e85c3468.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_339808426a88417d8e6a937a1fed35b0.pdf" target="_blank"><span class="num">6</span>Race Day 6</a>
-  </div>
-</div>
+    <div class="fleet-block">
+      <h3>DF95 Red Fleet</h3>
+      <div class="result-pills">
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_8bfdd7df5524492eb8dbcbc3f22bc9f9.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_78d4bf31332e460e83a1b27816722c95.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_0c064c0d77d44a5787b8c44aab44ff2d.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_909387e60f3e4306b0ad40e09f6bb4bb.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_b5bab182f8ba4ecf88393de5e85c3468.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_339808426a88417d8e6a937a1fed35b0.pdf" target="_blank"><span class="num">6</span>Race Day 6</a>
+      </div>
+    </div>
 
-<div class="fleet-block">
-  <h3>DF95 White Fleet</h3>
-  <div class="result-pills">
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_759e56972b9b41a4975012b7e91c2caf.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_fa6c7ffc02614a9d8754a7119131bd93.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_70671ad68a254a90893c610db4a4942e.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_e66f39174b4147a38aa9b23c70144450.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_f921926267b5414bb0b42b772345e1f6.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_056a934f1fea499fbb28fe7dac5eacd8.pdf" target="_blank"><span class="num">6</span>Race Day 6</a>
-  </div>
-</div>
+    <div class="fleet-block">
+      <h3>DF95 White Fleet</h3>
+      <div class="result-pills">
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_759e56972b9b41a4975012b7e91c2caf.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_fa6c7ffc02614a9d8754a7119131bd93.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_70671ad68a254a90893c610db4a4942e.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_e66f39174b4147a38aa9b23c70144450.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_f921926267b5414bb0b42b772345e1f6.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_056a934f1fea499fbb28fe7dac5eacd8.pdf" target="_blank"><span class="num">6</span>Race Day 6</a>
+      </div>
+    </div>
 
-<div class="fleet-block">
-  <h3>IOM Fleet</h3>
-  <div class="result-pills">
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_800f7a186861494e85adec6624455043.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_2e46f8ac3c6f4f39973d1141aa2cfdde.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_64fe61d7deba4ada8c7007dd7b78c869.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_9bf0f5c9f098420c81fd615443ecf204.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_132091dc1d53435baf90919b07160ab8.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
-  </div>
-</div>
+    <div class="fleet-block">
+      <h3>IOM Fleet</h3>
+      <div class="result-pills">
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_800f7a186861494e85adec6624455043.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_2e46f8ac3c6f4f39973d1141aa2cfdde.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_64fe61d7deba4ada8c7007dd7b78c869.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_9bf0f5c9f098420c81fd615443ecf204.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_132091dc1d53435baf90919b07160ab8.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
+      </div>
+    </div>
 
-<div class="fleet-block">
-  <h3>Soling 1M Fleet</h3>
-  <div class="result-pills">
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_b706944d596a4592908d7fde08f4ce31.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_3089d97df9394cc4b2d7066e2737871c.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_cc88476b39f1426fb3ea9c7e3dfce12d.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_f810f7bdf79042f48edcf3a02a592637.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_5a64a5ef89fc41ec8c633054e0967989.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
-  </div>
-</div>
+    <div class="fleet-block">
+      <h3>Soling 1M Fleet</h3>
+      <div class="result-pills">
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_b706944d596a4592908d7fde08f4ce31.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_3089d97df9394cc4b2d7066e2737871c.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_cc88476b39f1426fb3ea9c7e3dfce12d.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_f810f7bdf79042f48edcf3a02a592637.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_5a64a5ef89fc41ec8c633054e0967989.pdf" target="_blank"><span class="num">5</span>Race Day 5</a>
+      </div>
+    </div>
 
-<div class="fleet-block">
-  <h3>SeaWind Fleet</h3>
-  <div class="result-pills">
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_3ee58bd89cd847b98852c50c38063315.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_972b3341debd423abd385716ceb44367.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_e0b7449cab7c4c0e8b0a3738aaa2309d.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
-    <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_bbe6f5274857437e9305136d5fcee0fc.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
-  </div>
-</div>
+    <div class="fleet-block">
+      <h3>SeaWind Fleet</h3>
+      <div class="result-pills">
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_3ee58bd89cd847b98852c50c38063315.pdf" target="_blank"><span class="num">1</span>Race Day 1</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_972b3341debd423abd385716ceb44367.pdf" target="_blank"><span class="num">2</span>Race Day 2</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_e0b7449cab7c4c0e8b0a3738aaa2309d.pdf" target="_blank"><span class="num">3</span>Race Day 3</a>
+        <a class="result-pill" href="https://www.naplesmyc.org/_files/ugd/cc337f_bbe6f5274857437e9305136d5fcee0fc.pdf" target="_blank"><span class="num">4</span>Race Day 4</a>
+      </div>
+    </div>
 
-<p style="margin-top:2rem;font-size:0.85rem;color:var(--muted);">
-  Prior year results:
-  <a href="https://www.naplesmyc.org/2025-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2025</a> ·
-  <a href="https://www.naplesmyc.org/2024-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2024</a> ·
-  <a href="https://www.naplesmyc.org/2023-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2023</a> ·
-  <a href="https://www.naplesmyc.org/2022-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2022</a> ·
-  <a href="https://www.naplesmyc.org/2021-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2021</a>
-</p>
-```
-
+    <p style="margin-top:2rem;font-size:0.85rem;color:var(--muted);">
+      Prior year results:
+      <a href="https://www.naplesmyc.org/2025-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2025</a> ·
+      <a href="https://www.naplesmyc.org/2024-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2024</a> ·
+      <a href="https://www.naplesmyc.org/2023-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2023</a> ·
+      <a href="https://www.naplesmyc.org/2022-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2022</a> ·
+      <a href="https://www.naplesmyc.org/2021-race-results" target="_blank" style="color:var(--navy);font-weight:500;">2021</a>
+    </p>
   </div>
 </section>
 
 <!-- CLASSES -->
-
 <section id="classes">
   <div class="section-inner">
     <div class="section-header">
@@ -782,7 +767,6 @@ footer a { color: var(--gold); text-decoration: none; }
 </section>
 
 <!-- LOCATION -->
-
 <section id="location">
   <div class="section-inner">
     <div class="section-header">
@@ -790,33 +774,29 @@ footer a { color: var(--gold); text-decoration: none; }
       <span class="section-tag">Where to Find Us</span>
     </div>
 
-```
-<div class="pond-block">
-  <h3>Pond #1 — Primary Venue</h3>
-  <p><strong>North Collier Regional Park</strong><br/>15000 Livingston Rd, Naples, FL (just south of Immokalee Rd)</p>
-  <p>After entering the park, turn right at the first access road. Park in the designated spaces south of the Sun 'n Fun Water Park. The area accommodates approximately 15 cars — park close to your neighbor. With 13 buoys, courses can be set to match any wind condition.</p>
-  <a class="map-btn" href="https://maps.google.com/?q=North+Collier+Regional+Park,+15000+Livingston+Rd,+Naples,+FL" target="_blank">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M8 1C5.24 1 3 3.24 3 6c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="2"/></svg>
-    Open in Google Maps
-  </a>
-</div>
+    <div class="pond-block">
+      <h3>Pond #1 — Primary Venue</h3>
+      <p><strong>North Collier Regional Park</strong><br/>15000 Livingston Rd, Naples, FL (just south of Immokalee Rd)</p>
+      <p>After entering the park, turn right at the first access road. Park in the designated spaces south of the Sun 'n Fun Water Park. The area accommodates approximately 15 cars — park close to your neighbor. With 13 buoys, courses can be set to match any wind condition.</p>
+      <a class="map-btn" href="https://maps.google.com/?q=North+Collier+Regional+Park,+15000+Livingston+Rd,+Naples,+FL" target="_blank">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M8 1C5.24 1 3 3.24 3 6c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="2"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
 
-<div class="pond-block">
-  <h3>Pond #2 — Saturday Races (Jan–Mar)</h3>
-  <p><strong>5955 Naples Blvd, Naples, FL 34109</strong><br/>Just south of Dick's Sporting Goods.</p>
-  <p>Saturday morning races, January through March.</p>
-  <a class="map-btn" href="https://maps.google.com/?q=5955+Naples+Blvd,+Naples,+FL+34109" target="_blank">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M8 1C5.24 1 3 3.24 3 6c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="2"/></svg>
-    Open in Google Maps
-  </a>
-</div>
-```
-
+    <div class="pond-block">
+      <h3>Pond #2 — Saturday Races (Jan–Mar)</h3>
+      <p><strong>5955 Naples Blvd, Naples, FL 34109</strong><br/>Just south of Dick's Sporting Goods.</p>
+      <p>Saturday morning races, January through March.</p>
+      <a class="map-btn" href="https://maps.google.com/?q=5955+Naples+Blvd,+Naples,+FL+34109" target="_blank">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14"><path d="M8 1C5.24 1 3 3.24 3 6c0 4.25 5 9 5 9s5-4.75 5-9c0-2.76-2.24-5-5-5z"/><circle cx="8" cy="6" r="2"/></svg>
+        Open in Google Maps
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- NEWSLETTERS -->
-
 <section id="newsletters">
   <div class="section-inner">
     <div class="section-header">
@@ -825,65 +805,61 @@ footer a { color: var(--gold); text-decoration: none; }
     </div>
     <p style="color:var(--muted);font-size:0.9rem;margin-bottom:2rem;">Our newsletter is distributed monthly to members with an active email address on file. We welcome your ideas, regatta reports, and photos.</p>
 
-```
-<div class="newsletter-year">
-  <h3>2020</h3>
-  <div class="newsletter-pills">
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_52ba1eeda8e54f90b119ab00edd7d9d1.pdf" target="_blank">January</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_f7d5a733a9b14492bde7f71e277d4ffb.pdf" target="_blank">February</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d645eadb37cd460da19db2f7e7e8a91f.pdf" target="_blank">March</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_018623b6d2ea4fa8bc8d731629986c44.pdf" target="_blank">Annual Meeting</a>
-  </div>
-</div>
+    <div class="newsletter-year">
+      <h3>2020</h3>
+      <div class="newsletter-pills">
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_52ba1eeda8e54f90b119ab00edd7d9d1.pdf" target="_blank">January</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_f7d5a733a9b14492bde7f71e277d4ffb.pdf" target="_blank">February</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d645eadb37cd460da19db2f7e7e8a91f.pdf" target="_blank">March</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_018623b6d2ea4fa8bc8d731629986c44.pdf" target="_blank">Annual Meeting</a>
+      </div>
+    </div>
 
-<div class="newsletter-year">
-  <h3>2019</h3>
-  <div class="newsletter-pills">
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_783924a440ab4f908dca0bda867cfbef.pdf" target="_blank">January</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_b32512f28e494384a5916a2aad27cbe1.pdf" target="_blank">February</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_89e0d6004d95413d93b6f49488dbfd80.pdf" target="_blank">March</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_3df59120734c4c49b9e539c6b16935b9.pdf" target="_blank">April</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_2ec09649d6ee4f9c820428da22ecbf2b.pdf" target="_blank">May</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_f7242d89b8d7435280c8c19a166b5699.pdf" target="_blank">June</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d20a6964f8b14fe1bfa511012592f8cb.pdf" target="_blank">July</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_500274710a504f779a2118e1e1633903.pdf" target="_blank">August</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_6c3965d17fb94ac8924c3d556f8389b9.pdf" target="_blank">September</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_bd7c806bd95f42c6a2572c4bf89ea7a7.pdf" target="_blank">October</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_bcf76ee49b3d492f95555f865cac7c27.pdf" target="_blank">November</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_ed8c4ab7178f41db81f26a7c583904cb.pdf" target="_blank">December</a>
-  </div>
-</div>
+    <div class="newsletter-year">
+      <h3>2019</h3>
+      <div class="newsletter-pills">
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_783924a440ab4f908dca0bda867cfbef.pdf" target="_blank">January</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_b32512f28e494384a5916a2aad27cbe1.pdf" target="_blank">February</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_89e0d6004d95413d93b6f49488dbfd80.pdf" target="_blank">March</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_3df59120734c4c49b9e539c6b16935b9.pdf" target="_blank">April</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_2ec09649d6ee4f9c820428da22ecbf2b.pdf" target="_blank">May</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_f7242d89b8d7435280c8c19a166b5699.pdf" target="_blank">June</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d20a6964f8b14fe1bfa511012592f8cb.pdf" target="_blank">July</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_500274710a504f779a2118e1e1633903.pdf" target="_blank">August</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_6c3965d17fb94ac8924c3d556f8389b9.pdf" target="_blank">September</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_bd7c806bd95f42c6a2572c4bf89ea7a7.pdf" target="_blank">October</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_bcf76ee49b3d492f95555f865cac7c27.pdf" target="_blank">November</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_ed8c4ab7178f41db81f26a7c583904cb.pdf" target="_blank">December</a>
+      </div>
+    </div>
 
-<div class="newsletter-year">
-  <h3>2018</h3>
-  <div class="newsletter-pills">
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_78e81ddee60744ebb74371ae53b249cb.pdf" target="_blank">Jan 1</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_37428901398c4ac2b84002cfa1918ae9.pdf" target="_blank">Jan 15</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d42e29f9a267406f9e62c19029da9970.pdf" target="_blank">Feb 1</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_54c4d6090b4244cfa93c099651a8a60a.pdf" target="_blank">Feb 15</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d91ddfd4d31a45bbb22da704387b41fc.pdf" target="_blank">Mar 1</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_e3b403bfccaf46deb66e07be58ee6d5f.pdf" target="_blank">Mar 15</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_7665ea4b7d704074895d364e49b221fd.pdf" target="_blank">Apr 1</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_3f3227526485407ab9cce554346f96ab.pdf" target="_blank">Apr 15</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_a135d59dbb404360ad1e78edd42e6bab.pdf" target="_blank">May 1</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_4b654658b2b1418b892c7399467760c8.pdf" target="_blank">May 15</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_ad9d393c9c1541068e2699bdf57b1a3b.pdf" target="_blank">Jun 1</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d64d9e531e8a4a5c960a70f357050900.pdf" target="_blank">Jun 15</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_3e68243148c44bb78def721f7d96a7e7.pdf" target="_blank">July</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_820c5c8462134ce1ad9dd453adeb5c31.pdf" target="_blank">August</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_c50f20f9e66b4bcb99ec7d97782b10a0.pdf" target="_blank">September</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_1c62cf3e6a3f48af8662641aacf661aa.pdf" target="_blank">October</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_32c39a7b9caf4630a50508d2301a7724.pdf" target="_blank">November</a>
-    <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_906396ddec5d4336a9852e391dfc14ef.pdf" target="_blank">December</a>
-  </div>
-</div>
-```
-
+    <div class="newsletter-year">
+      <h3>2018</h3>
+      <div class="newsletter-pills">
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_78e81ddee60744ebb74371ae53b249cb.pdf" target="_blank">Jan 1</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_37428901398c4ac2b84002cfa1918ae9.pdf" target="_blank">Jan 15</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d42e29f9a267406f9e62c19029da9970.pdf" target="_blank">Feb 1</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_54c4d6090b4244cfa93c099651a8a60a.pdf" target="_blank">Feb 15</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d91ddfd4d31a45bbb22da704387b41fc.pdf" target="_blank">Mar 1</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_e3b403bfccaf46deb66e07be58ee6d5f.pdf" target="_blank">Mar 15</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_7665ea4b7d704074895d364e49b221fd.pdf" target="_blank">Apr 1</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_3f3227526485407ab9cce554346f96ab.pdf" target="_blank">Apr 15</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_a135d59dbb404360ad1e78edd42e6bab.pdf" target="_blank">May 1</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_4b654658b2b1418b892c7399467760c8.pdf" target="_blank">May 15</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_ad9d393c9c1541068e2699bdf57b1a3b.pdf" target="_blank">Jun 1</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_d64d9e531e8a4a5c960a70f357050900.pdf" target="_blank">Jun 15</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_3e68243148c44bb78def721f7d96a7e7.pdf" target="_blank">July</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_820c5c8462134ce1ad9dd453adeb5c31.pdf" target="_blank">August</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_c50f20f9e66b4bcb99ec7d97782b10a0.pdf" target="_blank">September</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_1c62cf3e6a3f48af8662641aacf661aa.pdf" target="_blank">October</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_32c39a7b9caf4630a50508d2301a7724.pdf" target="_blank">November</a>
+        <a class="newsletter-pill" href="https://www.naplesmyc.org/_files/ugd/8971bb_906396ddec5d4336a9852e391dfc14ef.pdf" target="_blank">December</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- JOIN -->
-
 <section id="join">
   <div class="section-inner">
     <div class="join-box">
@@ -895,7 +871,6 @@ footer a { color: var(--gold); text-decoration: none; }
 </section>
 
 <!-- FOOTER -->
-
 <footer>
   <p>© 2026 Naples Model Yacht Club · North Collier Regional Park, Naples, FL · <a href="https://www.facebook.com/groups/265630707896068" target="_blank">Facebook</a> · <a href="https://www.ussailing.org" target="_blank">US Sailing</a></p>
 </footer>
